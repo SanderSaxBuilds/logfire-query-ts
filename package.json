@@ -1,0 +1,63 @@
+{
+  "name": "logfire-query",
+  "version": "0.1.0",
+  "description": "Typed TypeScript client for the Pydantic Logfire Query API: SQL over your traces, logs and metrics as JSON, NDJSON streams, CSV or Arrow.",
+  "license": "MIT",
+  "author": "Alexandr Khrustalev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanderSaxBuilds/logfire-query-ts.git"
+  },
+  "homepage": "https://github.com/SanderSaxBuilds/logfire-query-ts#readme",
+  "bugs": {
+    "url": "https://github.com/SanderSaxBuilds/logfire-query-ts/issues"
+  },
+  "keywords": [
+    "logfire",
+    "pydantic",
+    "observability",
+    "opentelemetry",
+    "sql",
+    "query",
+    "ndjson",
+    "arrow"
+  ],
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run typecheck && vitest run",
+    "test:dist": "npm run build && node scripts/smoke-dist.mjs",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}
